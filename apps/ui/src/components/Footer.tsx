@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="w-5/12">
           <h3 className="text-xl font-semibold mb-2">Navigasi</h3>
           <div className="flex flex-col">
-            <a>Home</a>
-            <a>Shop</a>
-            <a>About Us</a>
+            <Link to="/">Home</Link>
+            <Link to="/shop">Shop</Link>
+            <Link to="/about-us">About Us</Link>
           </div>
         </div>
         <div className="w-5/12">

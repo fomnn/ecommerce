@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as ShopImport } from './routes/shop'
 import { Route as ProfileImport } from './routes/profile'
+import { Route as AboutUsImport } from './routes/about-us'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProfileIndexImport } from './routes/profile/index'
 import { Route as CartIndexImport } from './routes/cart/index'
@@ -33,6 +34,12 @@ const ShopRoute = ShopImport.update({
 const ProfileRoute = ProfileImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AboutUsRoute = AboutUsImport.update({
+  id: '/about-us',
+  path: '/about-us',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -93,6 +100,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsImport
       parentRoute: typeof rootRoute
     }
     '/profile': {
@@ -178,6 +192,7 @@ const ProfileRouteWithChildren =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/profile': typeof ProfileRouteWithChildren
   '/shop': typeof ShopRoute
   '/auth/login': typeof AuthLoginRoute
@@ -191,6 +206,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/shop': typeof ShopRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/sign-up': typeof AuthSignUpRoute
@@ -204,6 +220,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
   '/profile': typeof ProfileRouteWithChildren
   '/shop': typeof ShopRoute
   '/auth/login': typeof AuthLoginRoute
@@ -219,6 +236,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-us'
     | '/profile'
     | '/shop'
     | '/auth/login'
@@ -231,6 +249,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-us'
     | '/shop'
     | '/auth/login'
     | '/auth/sign-up'
@@ -242,6 +261,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about-us'
     | '/profile'
     | '/shop'
     | '/auth/login'
@@ -256,6 +276,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
   ProfileRoute: typeof ProfileRouteWithChildren
   ShopRoute: typeof ShopRoute
   AuthLoginRoute: typeof AuthLoginRoute
@@ -267,6 +288,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
   ProfileRoute: ProfileRouteWithChildren,
   ShopRoute: ShopRoute,
   AuthLoginRoute: AuthLoginRoute,
@@ -287,6 +309,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/about-us",
         "/profile",
         "/shop",
         "/auth/login",
@@ -298,6 +321,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/about-us": {
+      "filePath": "about-us.tsx"
     },
     "/profile": {
       "filePath": "profile.tsx",
