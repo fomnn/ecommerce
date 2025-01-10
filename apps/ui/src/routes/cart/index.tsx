@@ -14,13 +14,13 @@ export const Route = createFileRoute("/cart/")({
 function RouteComponent() {
   const { data } = useGetCartItems();
   return (
-    <div className="px-16 py-8 flex gap-12">
-      <div className="w-8/12">
+    <div className="px-4 sm:px-16 py-8 flex sm:flex-row flex-col gap-12">
+      <div className="w-full sm:w-8/12">
         <h1 className="text-3xl">My Cart</h1>
         <div className="divide-y">
           {data && data.cartItems.length > 0
-            ? data.cartItems.map((cartItem, i) => (
-                <CartProductCard cartItem={cartItem} key={i} />
+            ? data.cartItems.map(cartItem => (
+                <CartProductCard cartItem={cartItem} key={cartItem.id} />
               ))
             : (
                 <p className="text-sm text-zinc-400 mt-8">
@@ -58,13 +58,13 @@ function OrderSummary({ cartItems }: { cartItems?: CartItemWithProduct[] }) {
   }, [amount]);
 
   return (
-    <div className="w-4/12 divide-y mt-12 sticky top-12 h-fit bg-white border px-6 py-4">
+    <div className="w-full sm:w-4/12 divide-y mt-12 sticky top-12 h-fit bg-white border px-6 py-4">
       <div className="">
         <h2 className="font-semibold">Order Summary</h2>
         <div className="py-2 space-y-1">
           {cartItems && cartItems?.length > 0
-            ? cartItems?.map((cartItem, i) => (
-              <ProductSummary key={i} cartItem={cartItem} />
+            ? cartItems?.map(cartItem => (
+              <ProductSummary key={cartItem.id} cartItem={cartItem} />
             ))
             : <p className="text-sm text-zinc-400">Cart item still empty</p>}
 

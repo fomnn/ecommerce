@@ -13,7 +13,11 @@ export default function CartProductCard({ cartItem }: { cartItem: CartItemWithPr
   return (
     <div className="flex gap-4 py-5">
       <div className="w-2/12 bg-orange-50 aspect-square">
-        <img src={cartItem.image_urls[0].url} alt="" />
+        <img
+          src={cartItem.image_urls[0].url}
+          alt=""
+          className="size-full object-cover"
+        />
       </div>
       <div className="w-10/12 flex flex-col justify-between">
         <div className="">
@@ -29,8 +33,8 @@ export default function CartProductCard({ cartItem }: { cartItem: CartItemWithPr
             </span>
           </p>
         </div>
-        <div className="flex justify-between items-center">
-          <p className="text-2xl">
+        <div className="flex justify-between items-center sm:mt-0 mt-4">
+          <p className="text-base sm:text-2xl">
             $
             {cartItem.product.price.toFixed(2)}
           </p>
@@ -42,11 +46,15 @@ export default function CartProductCard({ cartItem }: { cartItem: CartItemWithPr
             >
               See Detail product
             </Link>
-            <button onClick={() => deleteCartitem()}>
+            <button type="button" onClick={() => deleteCartitem()}>
               <SolarTrashBinMinimalisticBroken />
             </button>
             <div className="flex items-center gap-2">
-              <button disabled={cartItem.quantity === 1} onClick={() => reduceQuantity()}>
+              <button
+                type="button"
+                disabled={cartItem.quantity === 1}
+                onClick={() => reduceQuantity()}
+              >
                 <SolarMinusCircleLinear
                   className={clsx({
                     "text-zinc-400 cursor-not-allowed": cartItem.quantity === 1,

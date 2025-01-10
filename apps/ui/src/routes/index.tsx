@@ -1,3 +1,4 @@
+import { useMobileNavigation } from "@/hooks/mobileNavigation";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import * as React from "react";
 
@@ -8,20 +9,22 @@ export const Route = createFileRoute("/")({
 function HomeComponent() {
   return (
     <div className="">
-      <div className="hero bg-gradient-to-br from-slate-100 to-70% to-white h-[calc(100dvh-3.5rem)] flex px-16 py-8 gap-16 items-center">
-        <div className="w-7/12 flex flex-col">
-          <h1 className="text-5xl font-semibold">Makanan Terbaik untuk Sahabat Tersayang</h1>
-          <p className="mt-3">Berikan nutrisi terbaik untuk hewan peliharaan Anda dengan pilihan makanan sehat dan berkualitas tinggi. Temukan produk favorit yang dibuat khusus untuk kebutuhan mereka!</p>
+      <div className="hero bg-gradient-to-br from-slate-100 to-70% to-white sm:h-[calc(100dvh-3.5rem)] flex sm:flex-row flex-col-reverse px-4 sm:px-16 py-8 gap-4 sm:gap-16 items-center">
+        <div className="sm:w-7/12 flex flex-col items-center sm:items-start">
+          <h1 className="text-3xl sm:text-5xl font-semibold text-center sm:text-start">
+            Makanan Terbaik untuk Sahabat Tersayang
+          </h1>
+          <p className="mt-3 text-center sm:text-start">Berikan nutrisi terbaik untuk hewan peliharaan Anda dengan pilihan makanan sehat dan berkualitas tinggi. Temukan produk favorit yang dibuat khusus untuk kebutuhan mereka!</p>
           <Link to="/shop" className="px-3 w-fit mt-6 shadow bg-amber-400 font-semibold rounded-md py-1">Belanja Sekarang</Link>
         </div>
-        <div className="w-5/12 aspect-square bg-pink-200 rounded-3xl overflow-hidden ">
+        <div className="sm:w-5/12 w-6/12 aspect-square bg-pink-200 rounded-3xl overflow-hidden ">
           <img src="/img/hero.png" alt="" />
         </div>
       </div>
 
-      <div className="px-16 py-8 pb-32 bg-gradient-to-tr to-70% to-white from-slate-100">
-        <h2 className="text-3xl font-semibold text-center">Pilih Category</h2>
-        <div className="grid grid-cols-3 gap-6 mt-4">
+      <div className="px-4 sm:px-16 py-8 pb-32 bg-gradient-to-tr to-70% to-white from-slate-100">
+        <h2 className="text-xl sm:text-3xl font-semibold text-center">Pilih Category</h2>
+        <div className="grid grid-cols-3 gap-2 sm:gap-6 mt-4">
           <Link
             to="/shop"
             search={{ category: "makanan_anjing" }}

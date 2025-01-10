@@ -1,6 +1,7 @@
 import type { User } from "@/types/user";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import MobileNavigation from "@/components/MobileNavigation";
 import { apiFetch } from "@/lib/ofetch";
 import { userStore } from "@/store/auth-store";
 import { createRootRoute, Outlet, useLocation } from "@tanstack/react-router";
@@ -41,7 +42,7 @@ function RootComponent() {
     if (!user && token) {
       verify();
     }
-  }, []);
+  });
 
   if (location.pathname.startsWith("/auth")) {
     return (
@@ -55,6 +56,7 @@ function RootComponent() {
         position="top-center"
         reverseOrder={false}
       />
+      <MobileNavigation />
       <Header />
       <div className="min-h-[calc(100vh-20rem)]">
         <Outlet />

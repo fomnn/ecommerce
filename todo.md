@@ -5,5 +5,6 @@
 [x] sort functionality in shop page
 [x] checkout page
 [x] profile and change password
+[x] search param <- shop page
 [] about us page
-[] search param <- shop page
+[] responsive

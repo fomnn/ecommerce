@@ -1,17 +1,21 @@
+import { isNavigationOpen, useMobileNavigation } from "@/hooks/mobileNavigation";
 import { userStore } from "@/store/auth-store";
 import { Link } from "@tanstack/react-router";
 import { useStore } from "@tanstack/react-store";
 import SolarCartBroken from "~icons/solar/cart-broken";
+import SolarHamburgerMenuLinear from "~icons/solar/hamburger-menu-linear";
 import SolarUserLinear from "~icons/solar/user-linear";
 
 export default function Header() {
   const user = useStore(userStore);
+  const { closeNavigation, openNavigation } = useMobileNavigation();
+  const isOpen = useStore(isNavigationOpen);
   return (
-    <header className="flex justify-between border-b shadow px-16 h-14 items-center">
+    <header className="flex justify-between border-b shadow px-4 sm:px-16 h-14 items-center">
       <div className="">
         <p>Logo</p>
       </div>
-      <div className="flex gap-8 items-center">
+      <div className="hidden sm:flex gap-8 items-center">
         <div className="flex gap-4 items-center">
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
@@ -35,6 +39,13 @@ export default function Header() {
               )}
         </div>
       </div>
+      <button
+        type="button"
+        className="block sm:hidden"
+        onClick={() => isOpen ? closeNavigation() : openNavigation()}
+      >
+        <SolarHamburgerMenuLinear className="text-lg" />
+      </button>
     </header>
   );
 }

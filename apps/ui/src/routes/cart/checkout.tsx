@@ -31,12 +31,12 @@ function RouteComponent() {
     });
   }
   return (
-    <div className="px-16 py-8 flex gap-12">
-      <div className="w-8/12 space-y-6">
+    <div className="px-4 sm:px-16 py-8 flex sm:flex-row flex-col gap-12">
+      <div className="sm:w-8/12 space-y-6">
         <h1 className="text-3xl">Checkout</h1>
         <div className="border px-4 py-4 rounded">
           <h2 className="text-lg font-semibold">Book Information</h2>
-          <div className="grid grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-4">
             <div className="">
               <h3>Full Name</h3>
               <p className="font-semibold">{user?.fullname}</p>
@@ -120,13 +120,13 @@ function OrderSummary({ cartItems, handleCheckout }: { cartItems?: CartItemWithP
   }, [amount]);
 
   return (
-    <div className="w-4/12 divide-y mt-12 sticky top-12 h-fit bg-white border px-6 py-4">
+    <div className="sm:w-4/12 divide-y sm:mt-12 sticky top-12 h-fit bg-white border px-6 py-4">
       <div className="">
         <h2 className="font-semibold">Order Summary</h2>
         <div className="py-2 space-y-1">
           {cartItems && cartItems?.length > 0
-            ? cartItems?.map((cartItem, i) => (
-              <ProductSummary key={i} cartItem={cartItem} />
+            ? cartItems?.map(cartItem => (
+              <ProductSummary key={cartItem.id} cartItem={cartItem} />
             ))
             : <p className="text-sm text-zinc-400">Cart item still empty</p>}
 

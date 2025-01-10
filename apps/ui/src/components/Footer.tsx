@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-tl border-t to-30% from-green-100 via-orange-100  px-16 py-8">
-      <div className="flex pb-16">
+    <footer className="bg-gradient-to-tl border-t to-30% from-green-100 via-orange-100 px-10 sm:px-16 py-8">
+      <div className="flex flex-col sm:flex-row gap-8 pb-16">
         <p className="w-full">Logo</p>
         <div className="w-5/12">
           <h3 className="text-xl font-semibold mb-2">Navigasi</h3>

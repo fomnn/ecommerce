@@ -23,6 +23,9 @@ function RouteComponent() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     signUp(userData, {
+      onError: (e) => {
+        console.error(e);
+      },
       onSuccess: () => {
         navigate({
           to: "/",
@@ -31,9 +34,9 @@ function RouteComponent() {
     });
   }
   return (
-    <div className="grid grid-cols-2 h-screen">
-      <div className="flex items-center justify-center">
-        <div className="w-7/12">
+    <div className="sm:grid grid-cols-2 h-screen">
+      <div className="flex items-center h-full justify-center">
+        <div className="w-10/12 sm:w-7/12">
           <h1 className="text-2xl mb-6">Sign Up</h1>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
@@ -114,7 +117,7 @@ function RouteComponent() {
               </label>
             </div>
 
-            <button className="bg-orange-400 w-full py-2 px-4 rounded text-white">Sign Up</button>
+            <button type="submit" className="bg-orange-400 w-full py-2 px-4 rounded text-white">Sign Up</button>
           </form>
           <p className="mt-4">
             Already have an account?
@@ -123,7 +126,7 @@ function RouteComponent() {
           </p>
         </div>
       </div>
-      <div className="h-full overflow-hidden">
+      <div className="h-full hidden sm:block overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
