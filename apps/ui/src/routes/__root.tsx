@@ -62,7 +62,7 @@ function RootComponent() {
         <Outlet />
       </div>
       <Footer />
-      <TanStackRouterDevtools position="bottom-left" />
+      {/* <TanStackRouterDevtools position="bottom-left" /> */}
     </>
   );
 }

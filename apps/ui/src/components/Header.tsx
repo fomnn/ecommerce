@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="flex justify-between border-b shadow px-4 sm:px-16 h-14 items-center">
       <div className="">
-        <p>Logo</p>
+        <p className="text-xl font-bold">Logo</p>
       </div>
       <div className="hidden sm:flex gap-8 items-center">
         <div className="flex gap-4 items-center">
